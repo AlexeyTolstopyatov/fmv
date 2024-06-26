@@ -4,7 +4,7 @@
 # Использование
 
 Копирование файла
-```batch
+```powershell
 ./fmv C:\file.txet + C:\new_catalog\copy.text
 ```
 Перемещение файла
