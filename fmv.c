@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int fcopy(char* from, char* to);
@@ -41,33 +41,36 @@ int fmove(char* from, char* to) {
 // * Creates 2 references of file.
 //      From-file opens with read attribures
 //      To-file opens with write attribures.
-// 
-// I don't know, why... but file structure corrupts while transfering 
-// (indev...)
+//
 int fcopy(char* from, char* to) {
     FILE* fromfile;
     FILE* tofile;
 
-    fromfile = fopen(from, "r");
+    fromfile = fopen(from, "rb"); // why read binary solve problem????
 
-    char buffer[4096];
+    int buffer;
 
     if (fromfile == NULL) {
         printf("failed to open %s for reading\n", from);
         return 1;
     }
 
-    tofile = fopen(to, "w");
+    tofile = fopen(to, "wb"); // why ???
 
     if (tofile == NULL) {
         printf("failed to open %s for writing\n", to);
         return 2;
     }
     
-    size_t bytes;
+    while (1) {
+        buffer = fgetc(fromfile);
+        //putchar(buffer);
 
-    while ((bytes = fread(buffer, 1, sizeof(buffer), fromfile)) > 0) {
-        fwrite(buffer, 1, bytes, tofile);
+        if (feof(fromfile)) {
+            break;
+        }
+        
+        fputc(buffer, tofile);
     }
 
     printf("\n");
