@@ -8,11 +8,11 @@
 ./fmv C:\file.txet + C:\new_catalog\copy.text
 ```
 Перемещение файла
-```batch
+```powershell
 ./fmv C:\file.text - C:\new_catalog\file.text
 ```
 Изменение имени и расширения
-```batch
+```powershell
 ./fmv C:\file.text - C:\new_name.text
 ```
 # TODO:
