@@ -16,8 +16,4 @@
 ./fmv C:\file.text - C:\new_name.text
 ```
 # TODO:
-У меня не хватает мозга, но при переносе содержимого файла, структура теряется.
- - Изменить ```fcopy()```
-```C
-int fcopy(char* from, char* toward);
-```
+ - Доделать ```fmove()```
